@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+
+<div class="clearfix"></div>
+	
+  <div class="content-wrapper">
+    <div class="container-fluid">
+
+  <!--Start Dashboard Content-->
+
+
+	
+	<div class="row">
+	 <div class="col-12 col-lg-12">
+	   <div class="card">
+	     <div class="card-header">TO DO APP
+		 
+	       <div class="table-responsive">
+                 <table class="table align-items-center table-flush table-borderless">
+                  <thead>
+                   <tr>
+                     <th>Task Name</th>
+                     <th>Task</th>
+                     <th>Adding Date</th>
+                     <th>Expire Date</th>
+                     <th>Edit</th>
+                     <th>Delete</th>
+                   </tr>
+                   </thead>
+                   <tbody>
+                     {% for i in tas %}
+                     <tr>
+                    <td>{{ i.task_name }}</td>
+                    <td>{{ i.task }}</td>
+                    <td>{{ i.date }}</td>
+                    <td>{{ i.last_date }}</td>
+                    <td>{{ i.age }}</td>
+                    <td><a href="{% url 'task_update' i.id  %}"><button style="background-color:	#075E54;border-radius:25px;box-shadow: 10px #000000;" >EDIT</button></a> </td>
+                    <td><a href="{% url 'task_delete' i.id  %}"><button style="background-color:#c20000;border-radius:25px;box-shadow: 10px #000000;" >DELETE</button></a> </td>
+                    </tr>
+                   {% endfor %}
+
+                 </tbody></table>
+               </div>
+	   </div>
+	 </div>
+	</div><!--End Row-->
+
+      <!--End Dashboard Content-->
+	  
+	<!--start overlay-->
+		  <div class="overlay toggle-menu"></div>
+		<!--end overlay-->
+		
+    </div>
+
+    <!-- End container-fluid-->
+      {% endblock %}
